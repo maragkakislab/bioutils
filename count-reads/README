@@ -1,0 +1,2 @@
+Script the counts the number of HTS reads in a file.
+The script supports the most common HTS file formats: SAM, FASTQ, FASTA, BED.

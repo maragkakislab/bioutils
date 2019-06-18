@@ -1,0 +1,27 @@
+Script to calculate upper-quartile normalized values for an input table.
+
+e.g. of input
+
+	sample	genename	count	type
+	smp1	gene1	72	ctrl
+	smp1	gene2	6	ctrl
+	smp1	gene3	65	ctrl
+	smp2	gene21	58	ctrl
+	smp2	gene22	64	ctrl
+	smp2	gene3	45	ctrl
+	smp4	gene21	83	cond
+	smp4	gene2	8	cond
+	smp4	gene3	76	cond
+
+e.g. of output
+
+	sample	genename	count	type	count.norm
+	smp1	gene1	72	ctrl	1.10769230769231
+	smp1	gene2	6	ctrl	0.0923076923076923
+	smp1	gene3	65	ctrl	1
+	smp2	gene21	58	ctrl	1
+	smp2	gene22	64	ctrl	1.10344827586207
+	smp2	gene3	45	ctrl	0.775862068965517
+	smp4	gene21	83	cond	1.12162162162162
+	smp4	gene2	8	cond	0.108108108108108
+	smp4	gene3	76	cond	1.02702702702703
