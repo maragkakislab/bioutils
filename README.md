@@ -18,7 +18,8 @@ Here, we will consolidate scripts for commonly-used functions such as converting
 1. Ensure your repository is up to date: `git pull`
 2. Add changed files to commit: `git add [path/to/files]
 3. Commit files: `git commit -m "[Descriptive message about commit]"
-4. Go to your forked github directory https://github.com/[username]/bioutils on a browser
-5. Click on the green "Pull Request" button
+4. Push commit to Github: `git push`
+5. Go to your forked github directory https://github.com/[username]/bioutils on a browser
+6. Click on the green "Pull Request" button
 WIP
 
