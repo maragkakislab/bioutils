@@ -8,10 +8,9 @@ Here, we will consolidate scripts for commonly-used functions such as converting
 
 # Usage
 
-1. Go to https://github.com/maragkakislab/bioutils and fork the repository to your own Github account
-2. Go to a directory of choice to install bioutils, suggest `~/dev`: `cd ~/dev`
-3. Clone the repository into your directory: `git clone https://github.com/[username]/bioutils`
-4. Install all binaries into `~/bin/`: `for file in bioutils/*/bin/*;do ln -s $file ~/bin/$(basename "${file%.*}");done`
+1. Fork the repository into your own Github account
+2. Clone your forked repository into a directory of choice and change into the cloned repository e.g. `cd ~/dev/bioutils`
+3. Install all binaries into `~/bin/`: `for file in bioutils/*/bin/*;do ln -s $file ~/bin/$(basename "${file%.*}");done`
 
 # Making changes
 
