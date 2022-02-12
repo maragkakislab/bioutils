@@ -13,11 +13,17 @@ my ($opt, $usage) = describe_options(
 	['down-dir=s', 'directory for SRA download', { required => 1}],
 	['o-dir=s', 'output dir for samples', { required => 1}],
 	['skip-download', 'skip download of SRA files'],
+	['pigz', 'use pigz instead of gzip'],
 	['help|h', 'print usage message and exit'],
 );
 print($usage->text), exit if $opt->help;
 
 my ($json_file, $down_dir, $samples_dir) = ($opt->json, $opt->down_dir, $opt->o_dir);
+
+my $zprog = "gzip";
+if ($opt->pigz) {
+	$zprog = "pigz";
+};
 
 my $json;
 {
@@ -37,7 +43,8 @@ if (!$opt->skip_download) {
 	foreach my $s (@samples) {
 		my @accessions = @{$s->{sra}};
 		foreach my $a (@accessions) {
-			system "fastq-dump --outdir $down_dir/ --gzip --skip-technical --dumpbase --split-files --clip $a";
+			system "fasterq-dump --outdir $down_dir/ --split-files $a";
+			system "$zprog $down_dir/$a*.fastq";
 		}
 	}
 }
@@ -67,10 +74,10 @@ foreach my $s (@samples) {
 
 	my @cmds;
 	if (@read1_files > 0) {
-		push @cmds, "zcat " . join(" ", @read1_files) . " | gzip > $odir/reads.1.fastq.gz";
+		push @cmds, "$zprog -dc " . join(" ", @read1_files) . " | $zprog > $odir/reads.1.fastq.gz";
 	}
 	if (@read2_files > 0) {
-		push @cmds, "zcat " . join(" ", @read2_files) . " | gzip > $odir/reads.2.fastq.gz";
+		push @cmds, "$zprog -dc " . join(" ", @read2_files) . " | $zprog > $odir/reads.2.fastq.gz";
 	}
 	push @all_cmds, @cmds;
 
