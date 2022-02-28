@@ -39,7 +39,8 @@ if (!-t STDIN) {
 # Loop on files and count
 foreach my $file (@ARGV) {
 	if (!file_exists($file)) {
-		return undef, "$file: does not exist";
+		warn "$file: does not exist\n";
+		next;
 	}
 
 	my ($cnt, $err) = count_reads($file, $opt->type, $opt->skip_unmapped);
